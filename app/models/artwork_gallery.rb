@@ -1,4 +1,4 @@
 class ArtworkGallery < ApplicationRecord
-  belongs_to :Artwork
-  belongs_to :Gallery
+  belongs_to :artwork
+  belongs_to :gallery
 end

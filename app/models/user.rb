@@ -1,4 +1,4 @@
 class User < ApplicationRecord
-  has_many :Artworks
-  has_many :Galleries
+  has_many :artworks
+  has_many :galleries
 end

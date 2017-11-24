@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    render json: @user, include: ['artworks', 'galleries']
+    render json: @user
   end
 
   def create
@@ -25,7 +25,7 @@ class Api::V1::UsersController < ApplicationController
     else
       @user = User.find_by(name: params[:name])
     end
-    render json: @user, include: ['artworks', 'galleries']
+    render json: @user
   end
 
 

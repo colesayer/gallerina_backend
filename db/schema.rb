@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20171124190044) do
   end
 
   create_table "artworks", force: :cascade do |t|
+    t.integer "user_id"
     t.string "artist"
     t.string "title"
     t.string "date"
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(version: 20171124190044) do
   end
 
   create_table "galleries", force: :cascade do |t|
+    t.integer "user_id"
     t.string "gallery_name"
     t.integer "dim_x"
     t.integer "dim_y"

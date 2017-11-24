@@ -1,6 +1,7 @@
 class CreateArtworks < ActiveRecord::Migration[5.1]
   def change
     create_table :artworks do |t|
+      t.integer :user_id
       t.string :artist
       t.string :title
       t.string :date

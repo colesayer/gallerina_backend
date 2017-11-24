@@ -1,4 +1,4 @@
 class Gallery < ApplicationRecord
-  belongs_to :User
-  has_many :Artworks, through: :ArtworkGallery
+  belongs_to :user
+  has_many :artworks, through: :artwork_galleries
 end
