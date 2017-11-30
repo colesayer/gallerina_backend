@@ -1,8 +1,12 @@
-class Api::V1::GalleriesController < ApplicationController
+class GalleriesController < ApplicationController
 
   def index
-    @galleries = Gallery.all
-    render json: @galleries
+    if current_user
+      @galleries = Gallery.all
+      render json: @galleries
+    else
+      render json: { error: "some bad stuff happened"}
+    end
   end
 
   def show
@@ -10,7 +14,7 @@ class Api::V1::GalleriesController < ApplicationController
     render json: @gallery
   end
 
-  def create 
+  def create
     @gallery = Gallery.new(user_id: params[:user_id], gallery_name: params[:gallery_name], dim_x: params[:dim_x], dim_y: params[:dim_y], dim_z: params[:dim_z], floor_texture: params[:floor_texture], wall_color: params[:wall_color])
     if @gallery.save
       render json: @gallery

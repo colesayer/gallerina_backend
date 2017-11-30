@@ -1,8 +1,13 @@
-class Api::V1::ArtworksController < ApplicationController
+class ArtworksController < ApplicationController
+
 
   def index
-    @artworks = Artwork.all
-    render json: @artworks
+    if current_user
+      @artworks = Artwork.all
+      render json: @artworks
+    else
+      render json: { error: "some bad stuff happened"}
+    end
   end
 
   def show
