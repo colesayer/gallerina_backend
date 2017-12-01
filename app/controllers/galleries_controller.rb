@@ -1,12 +1,9 @@
 class GalleriesController < ApplicationController
 
   def index
-    if current_user
-      @galleries = Gallery.all
+      @user = User.find(params[:user_id])
+      @galleries = @user.galleries
       render json: @galleries
-    else
-      render json: { error: "some bad stuff happened"}
-    end
   end
 
   def show

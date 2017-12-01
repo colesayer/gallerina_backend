@@ -2,12 +2,9 @@ class ArtworksController < ApplicationController
 
 
   def index
-    if current_user
-      @artworks = Artwork.all
-      render json: @artworks
-    else
-      render json: { error: "some bad stuff happened"}
-    end
+    @user = User.find(params[:user_id])
+    @artworks = @user.artworks
+    render json: @artworks
   end
 
   def show

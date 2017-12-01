@@ -14,13 +14,12 @@ Rails.application.routes.draw do
   post   'user_token'      => 'user_token#create'
 
   # User actions
-  get    '/users'          => 'users#index'
   get    '/users/current'  => 'users#current'
   post   '/users/create'   => 'users#create'
-  patch  '/user/:id'       => 'users#update'
-  delete '/user/:id'       => 'users#destroy'
 
-  resources :artworks, only: [:index, :show, :create, :update, :destroy]
-  resources :galleries, only: [:index, :show, :create, :update, :destroy]
+  resources :users, only: [:index, :update, :destroy] do
+    resources :artworks, only: [:index, :show, :create, :update, :destroy]
+    resources :galleries, only: [:index, :show, :create, :update, :destroy]
+  end
 
 end
