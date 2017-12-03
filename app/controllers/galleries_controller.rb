@@ -23,7 +23,9 @@ class GalleriesController < ApplicationController
   def update
     @gallery = Gallery.find_by(id: params[:id])
     if @gallery.update(gallery_name: params[:gallery_name], dim_x: params[:dim_x], dim_y: params[:dim_y], dim_z: params[:dim_z], floor_texture: params[:floor_texture], wall_color: params[:wall_color])
-      render json: @gallery
+      @user = User.find_by(id: params[:user_id])
+      @galleries = @user.galleries
+      render json: @galleries
     else
       render json: {errors: @gallery.errors.full_messages}, status: 422
     end
@@ -32,7 +34,9 @@ class GalleriesController < ApplicationController
   def destroy
     @gallery = Gallery.find_by(id: params[:id])
     if @gallery.destroy
-      render json: {}, status: 200
+      @user = User.find_by(id: params[:user_id])
+      @galleries = @user.galleries
+      render json: @galleries
     else
       render json: {errors: @gallery.errors.full_messages}, status: 422
     end
