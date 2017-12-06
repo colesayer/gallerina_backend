@@ -4,6 +4,7 @@ class CreateScenes < ActiveRecord::Migration[5.1]
       t.string :name
       t.integer :user_id
       t.integer :gallery_id
+      t.text :image
     end
   end
 end

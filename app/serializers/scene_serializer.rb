@@ -1,6 +1,6 @@
 class SceneSerializer < ActiveModel::Serializer
-  attributes :id, :name, :gallery_id
-  
+  attributes :id, :name, :gallery_id, :image
+
   has_many :scene_artworks
   has_many :artworks
   belongs_to :gallery

@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20171205192723) do
     t.string "name"
     t.integer "user_id"
     t.integer "gallery_id"
+    t.text "image"
   end
 
   create_table "users", force: :cascade do |t|

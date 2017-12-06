@@ -12,7 +12,10 @@ class ScenesController < ApplicationController
   end
 
   def create
-    @scene = Scene.create(user_id: params[:user_id], name: params[:name], gallery_id: params[:gallery_id])
+    @user = User.find(params[:user_id])
+    @scene_number = @user.scenes.length + 1
+    @scene_name = "Scene #{@scene_number.to_s}"
+    @scene = Scene.create(user_id: params[:user_id], name: @scene_name, gallery_id: params[:gallery_id], image: params[:image])
     params[:artworks].each do |artwork|
       @scene_artwork = SceneArtwork.create(
       artwork_id: artwork["artwork_id"],
