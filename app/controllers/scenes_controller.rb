@@ -13,7 +13,7 @@ class ScenesController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @scene_number = @user.scenes.length + 1
+    @scene_number = @user.scenes.last.id + 1
     @scene_name = "Scene #{@scene_number.to_s}"
     @scene = Scene.create(user_id: params[:user_id], name: @scene_name, gallery_id: params[:gallery_id], image: params[:image])
     params[:artworks].each do |artwork|
@@ -30,6 +30,17 @@ class ScenesController < ApplicationController
       render json: @scene
     else
       render json: {errors: @scene.errors.full_messages}, status: 422
+    end
+  end
+
+  def destroy
+    @scene = Scene.find_by(id: params[:id])
+    if @scene.destroy
+      @user = User.find_by(id: params[:user_id])
+      @scenes = @user.scenes
+      render json: @scenes
+    else
+      render json: {errors: @scenes.errors.full_messages}, status: 422
     end
   end
 
