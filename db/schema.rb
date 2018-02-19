@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130162731) do
+ActiveRecord::Schema.define(version: 20171205192723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,21 @@ ActiveRecord::Schema.define(version: 20171130162731) do
     t.datetime "updated_at", null: false
     t.string "floor_texture"
     t.string "wall_color"
+  end
+
+  create_table "scene_artworks", force: :cascade do |t|
+    t.integer "scene_id"
+    t.integer "artwork_id"
+    t.decimal "position_x"
+    t.decimal "position_y"
+    t.decimal "position_z"
+  end
+
+  create_table "scenes", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.integer "gallery_id"
+    t.text "image"
   end
 
   create_table "users", force: :cascade do |t|
