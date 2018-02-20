@@ -25,4 +25,4 @@ Gallerina allows you to create a gallery on the fly. Just enter the dimensions o
 4.  Make sure <a href="https://www.postgresql.org/">PostgreSQL</a> is installed and running.
 5.  Run 'rake db:create' and 'rake db:migrate'
 5.  Run 'rails s'.  The api will run on http://localhost:3000/ by default
-6.  Go to the<a href="https://github.com/colesayer/final_frontend">Gallerina frontend</a> to complete the steps.
+6.  Go to the <a href="https://github.com/colesayer/final_frontend">Gallerina frontend</a> to complete the steps.
