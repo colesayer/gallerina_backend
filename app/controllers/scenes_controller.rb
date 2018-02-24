@@ -13,7 +13,11 @@ class ScenesController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @scene_number = @user.scenes.last.id + 1
+    if @user.scenes.last
+      @scene_number = @user.scenes.last.id + 1
+    else
+      @scene_number = 1
+    end
     @scene_name = "Scene #{@scene_number.to_s}"
     @scene = Scene.create(user_id: params[:user_id], name: @scene_name, gallery_id: params[:gallery_id], image: params[:image])
     params[:artworks].each do |artwork|
