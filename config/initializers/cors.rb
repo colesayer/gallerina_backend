@@ -5,9 +5,11 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
+# origins 'gallerina.herokuapp.com'
+
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'gallerina.herokuapp.com'
+    origins '*'
 
     resource '*',
       headers: :any,
